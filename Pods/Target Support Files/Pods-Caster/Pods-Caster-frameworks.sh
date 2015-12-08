@@ -87,17 +87,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Caster/Alamofire.framework"
   install_framework "Pods-Caster/ChameleonFramework.framework"
   install_framework "Pods-Caster/FontAwesomeIconFactory.framework"
-  install_framework "Pods-Caster/Moya.framework"
-  install_framework "Pods-Caster/ReactiveCocoa.framework"
-  install_framework "Pods-Caster/Result.framework"
+  install_framework "Pods-Caster/SWXMLHash.framework"
   install_framework "Pods-Caster/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Caster/Alamofire.framework"
   install_framework "Pods-Caster/ChameleonFramework.framework"
   install_framework "Pods-Caster/FontAwesomeIconFactory.framework"
-  install_framework "Pods-Caster/Moya.framework"
-  install_framework "Pods-Caster/ReactiveCocoa.framework"
-  install_framework "Pods-Caster/Result.framework"
+  install_framework "Pods-Caster/SWXMLHash.framework"
   install_framework "Pods-Caster/SwiftyJSON.framework"
 fi

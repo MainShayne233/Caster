@@ -5,10 +5,9 @@ use_frameworks!
 
 target 'Caster' do
 
-pod 'Moya'
-pod 'Moya/ReactiveCocoa'
-pod 'ReactiveCocoa'
+pod 'Alamofire'
 pod 'SwiftyJSON'
+pod 'SWXMLHash'
 pod 'ChameleonFramework/Swift'
 pod 'FontAwesomeIconFactory'
 

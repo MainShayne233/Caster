@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		076DAE391C08D3C600927960 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076DAE381C08D3C600927960 /* AppDelegate.swift */; };
-		076DAE3B1C08D3C600927960 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076DAE3A1C08D3C600927960 /* ViewController.swift */; };
+		070827DD1C13AC8700E12F8A /* SearchTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070827DC1C13AC8700E12F8A /* SearchTableViewDataSource.swift */; };
+		071AB3ED1C1542A900EE7CC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071AB3EC1C1542A900EE7CC6 /* AppDelegate.swift */; };
+		072C9F681C12482100C5A40D /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C9F671C12482100C5A40D /* ShowTableViewCell.swift */; };
+		076C99651C1284AB005D5B16 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076C99641C1284AB005D5B16 /* Show.swift */; };
+		076C996B1C1377E2005D5B16 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076C996A1C1377E2005D5B16 /* SearchTableViewController.swift */; };
 		076DAE3E1C08D3C600927960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076DAE3C1C08D3C600927960 /* Main.storyboard */; };
 		076DAE401C08D3C600927960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 076DAE3F1C08D3C600927960 /* Assets.xcassets */; };
 		076DAE431C08D3C600927960 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076DAE411C08D3C600927960 /* LaunchScreen.storyboard */; };
@@ -16,9 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		070827DC1C13AC8700E12F8A /* SearchTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewDataSource.swift; sourceTree = "<group>"; };
+		071AB3EC1C1542A900EE7CC6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		072C9F671C12482100C5A40D /* ShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
+		076C99641C1284AB005D5B16 /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		076C996A1C1377E2005D5B16 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		076DAE351C08D3C500927960 /* Caster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caster.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		076DAE381C08D3C600927960 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		076DAE3A1C08D3C600927960 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		076DAE3D1C08D3C600927960 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		076DAE3F1C08D3C600927960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		076DAE421C08D3C600927960 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		072C9F661C12404200C5A40D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				072C9F671C12482100C5A40D /* ShowTableViewCell.swift */,
+				076C99641C1284AB005D5B16 /* Show.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		076DAE2C1C08D3C500927960 = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +76,13 @@
 		076DAE371C08D3C500927960 /* Caster */ = {
 			isa = PBXGroup;
 			children = (
+				072C9F661C12404200C5A40D /* Models */,
 				07EFEB3A1C110EFE00B997EC /* Views */,
-				076DAE381C08D3C600927960 /* AppDelegate.swift */,
 				076DAE3C1C08D3C600927960 /* Main.storyboard */,
 				076DAE3F1C08D3C600927960 /* Assets.xcassets */,
 				076DAE411C08D3C600927960 /* LaunchScreen.storyboard */,
 				076DAE441C08D3C600927960 /* Info.plist */,
+				071AB3EC1C1542A900EE7CC6 /* AppDelegate.swift */,
 			);
 			path = Caster;
 			sourceTree = "<group>";
@@ -74,7 +90,8 @@
 		07EFEB3A1C110EFE00B997EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				076DAE3A1C08D3C600927960 /* ViewController.swift */,
+				076C996A1C1377E2005D5B16 /* SearchTableViewController.swift */,
+				070827DC1C13AC8700E12F8A /* SearchTableViewDataSource.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -219,8 +236,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				076DAE3B1C08D3C600927960 /* ViewController.swift in Sources */,
-				076DAE391C08D3C600927960 /* AppDelegate.swift in Sources */,
+				072C9F681C12482100C5A40D /* ShowTableViewCell.swift in Sources */,
+				076C996B1C1377E2005D5B16 /* SearchTableViewController.swift in Sources */,
+				076C99651C1284AB005D5B16 /* Show.swift in Sources */,
+				071AB3ED1C1542A900EE7CC6 /* AppDelegate.swift in Sources */,
+				070827DD1C13AC8700E12F8A /* SearchTableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +351,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 977026F9E36C59957DC59D34 /* Pods-Caster.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Caster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -343,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E889AA60B01E4A0156A8BE2 /* Pods-Caster.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Caster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
