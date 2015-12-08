@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import DZNEmptyDataSet
 
 class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
 
@@ -20,6 +21,7 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         searchBar.resignFirstResponder()
+        podcasts.removeAll()
         var text = searchBar.text
         text = text?.stringByReplacingOccurrencesOfString(" ", withString: "+")
         let url = NSURL(string: "https://itunes.apple.com/search?media=podcast&limit=25&term=".stringByAppendingString(text!))
@@ -27,7 +29,7 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
             switch response.result {
             case .Success(let data):
                 let json = JSON(data)
-                for (index, show):(String, JSON) in json["results"] {
+                for (_, show):(String, JSON) in json["results"] {
                     let title = show["collectionName"].stringValue
                     let author = show["artistName"].stringValue
                     let showImage = show["artworkUrl100"].URL
@@ -37,6 +39,7 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
                 }
                 self.tableView.reloadData()
             case .Failure(let error):
+                //TODO: Show user that search request has failed
                 print("Request failed with error: \(error)")
             }
         }
@@ -46,6 +49,10 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
         super.viewDidLoad()
         searchBar.delegate = self
         self.searchBar.sizeToFit()
+        self.tableView.tableFooterView = UIView()
+        
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
         
         self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -54,6 +61,11 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        self.tableView.emptyDataSetDelegate = nil
+        self.tableView.emptyDataSetSource = nil
     }
 
 
@@ -135,4 +147,13 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
     }
     */
 
+}
+
+extension SearchTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "No podcasts present")
+    }
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "Try searching for a show above")
+    }
 }

@@ -6,9 +6,11 @@ use_frameworks!
 target 'Caster' do
 
 pod 'Alamofire'
+pod 'AlamofireImage'
 pod 'SwiftyJSON'
 pod 'SWXMLHash'
+pod 'DZNEmptyDataSet'
 pod 'ChameleonFramework/Swift'
 pod 'FontAwesomeIconFactory'
-
+pod 'netfox'
 end

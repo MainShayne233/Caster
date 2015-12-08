@@ -9,7 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,10 +44,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>netfox.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03BCD93E237B85D5E7E0B70B517EC0DE</key>
+		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30B00F255EC3B84EA8C6BCD69270E8B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>37764A40AC53D3C566ECE3A11CA02700</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,12 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5B9936549E36986FD4127C51F791C1BB</key>
+		<key>82E12A6CA7953F4E75E087BEF5FAD57D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7FAEC93EEAA1019C3946FBCDD557301C</key>
+		<key>9D625253E16EFBBE6A452D28B07A762E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A1BF58736B6CCECB5DB30E2108366143</key>
 		<dict>
 			<key>primary</key>
 			<true/>
