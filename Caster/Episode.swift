@@ -13,5 +13,5 @@ struct Episode {
     let episodeSummary: String?
     let episodeDuration: String?
     let episodeDate: String?
-    let episodeUrl: NSURL?
+    let episodeUrl: String?
 }
