@@ -21,6 +21,7 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
     @IBOutlet var tableView: UITableView!
     
     var podcasts:[Show] = []
+    var colorArray = ColorSchemeOf(ColorScheme.Triadic, color: FlatBlue(), isFlatScheme: true)
     let imageView: UIImageView = UIImageView()
     
     
@@ -60,8 +61,7 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         
-        self.tableView.estimatedRowHeight = 200
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.navigationController!.hidesNavigationBarHairline = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,7 +88,15 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("ShowCell") as! ShowTableViewCell
         
         cell.titleLabel?.text = self.podcasts[indexPath.row].title
+        cell.titleLabel.textColor = colorArray[4]
+        
         cell.authorLabel?.text = self.podcasts[indexPath.row].author
+        
+        cell.showImage.layer.borderWidth = 1
+        cell.showImage.layer.masksToBounds = false
+        cell.showImage.layer.borderColor = UIColor.flatGrayColor().CGColor
+        cell.showImage.layer.cornerRadius = cell.showImage.frame.size.height / 2
+        cell.showImage.clipsToBounds = true
         cell.showImage.kf_setImageWithURL(podcasts[indexPath.row].showImage!)
         
         return cell
@@ -105,6 +113,11 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
                 if let showIndex = tableView.indexPathForSelectedRow?.row {
                     destination.podcastTitle = podcasts[showIndex].title!
                     destination.feedUrl = podcasts[showIndex].feedUrl!
+                    
+                    let index = NSIndexPath(forRow: showIndex, inSection: 0)
+                    let cell = self.tableView.cellForRowAtIndexPath(index) as! ShowTableViewCell
+                    
+                    destination.selectedImage = cell.showImage.image!
                 }
             }
         }

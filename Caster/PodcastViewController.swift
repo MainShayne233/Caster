@@ -20,6 +20,7 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var podcastTitle = String()
     var feedUrl = NSURL()
+    var selectedImage: UIImage!
     var episodes:[Episode] = []
     
     override func viewWillAppear(animated: Bool) {
@@ -28,14 +29,19 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let colorScheme = ColorsFromImage(podcastImage.image!, withFlatScheme: true)
-
+        
+        podcastImage.layer.borderWidth = 1
+        podcastImage.layer.masksToBounds = false
+        podcastImage.layer.borderColor = UIColor.flatGrayColor().CGColor
+        podcastImage.layer.cornerRadius = podcastImage.frame.size.height / 2
+        podcastImage.clipsToBounds = true
+        podcastImage.image = selectedImage
+        
         Alamofire.request(.GET, feedUrl).responseData { response in
             switch response.result {
             case .Success(let data):
                 let xml = SWXMLHash.parse(data)
-                //let podcastDesc = xml["rss"]["channel"]["description"].element?.text
-                //self.podcastDescriptionLabel.text = podcastDesc
+                let podcastDesc = xml["rss"]["channel"]["description"].element?.text
                 for elem in xml["rss"]["channel"]["item"] {
                     let episodeTitle = elem["title"].element?.text
                     let episodeSummary = elem["description"].element?.text
@@ -45,15 +51,16 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
                     let episode = Episode(episodeTitle: episodeTitle, episodeSummary: episodeSummary, episodeDuration: episodeDuration, episodeDate: episodeDate, episodeUrl: episodeUrl)
                     self.episodes.append(episode)
                 }
+                self.podcastDescriptionLabel.text = podcastDesc
                 self.episodeTableView.reloadData()
             case .Failure(let error):
                 //TODO: Show user that search request has failed
                 print("Request failed with error: \(error)")
             }
         }
-        // Do any additional setup after loading the view.
-        self.setStatusBarStyle(UIStatusBarStyleContrast)
-       // view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: colorScheme)
+        
+        
+        
         configureTableView()
     }
 
@@ -81,6 +88,7 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
         let description:NSString? = self.episodes[indexPath.row].episodeSummary
         
         cell.epTitleLabel.text = self.episodes[indexPath.row].episodeTitle
+        cell.epTitleLabel.textColor = ContrastColorOf(view.backgroundColor!, returnFlat: true)
         
         if let description = description {
             if description.length > 300 {
@@ -90,7 +98,13 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
+        cell.epDescriptionLabel.textColor = ContrastColorOf(view.backgroundColor!, returnFlat: true)
+        
         return cell
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.clearColor()
     }
 
     /*
