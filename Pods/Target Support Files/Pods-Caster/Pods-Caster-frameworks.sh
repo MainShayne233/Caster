@@ -85,20 +85,20 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Caster/Alamofire.framework"
-  install_framework "Pods-Caster/AlamofireImage.framework"
   install_framework "Pods-Caster/ChameleonFramework.framework"
   install_framework "Pods-Caster/DZNEmptyDataSet.framework"
   install_framework "Pods-Caster/FontAwesomeIconFactory.framework"
+  install_framework "Pods-Caster/Kingfisher.framework"
   install_framework "Pods-Caster/SWXMLHash.framework"
   install_framework "Pods-Caster/SwiftyJSON.framework"
   install_framework "Pods-Caster/netfox.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Caster/Alamofire.framework"
-  install_framework "Pods-Caster/AlamofireImage.framework"
   install_framework "Pods-Caster/ChameleonFramework.framework"
   install_framework "Pods-Caster/DZNEmptyDataSet.framework"
   install_framework "Pods-Caster/FontAwesomeIconFactory.framework"
+  install_framework "Pods-Caster/Kingfisher.framework"
   install_framework "Pods-Caster/SWXMLHash.framework"
   install_framework "Pods-Caster/SwiftyJSON.framework"
   install_framework "Pods-Caster/netfox.framework"

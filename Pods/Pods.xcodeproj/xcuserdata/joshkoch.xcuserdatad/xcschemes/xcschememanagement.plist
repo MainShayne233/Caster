@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>AlamofireImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,6 +20,11 @@
 			<false/>
 		</dict>
 		<key>FontAwesomeIconFactory.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,12 +57,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>30B00F255EC3B84EA8C6BCD69270E8B3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>37764A40AC53D3C566ECE3A11CA02700</key>
+		<key>215445D708BB80C7C717EC16410A000A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,22 +72,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>79B608A6E4265832A248A08AF0B41F61</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>82E12A6CA7953F4E75E087BEF5FAD57D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D625253E16EFBBE6A452D28B07A762E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A1BF58736B6CCECB5DB30E2108366143</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C1967A1B7BD24B96811D1E776757119B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CBCD8B9256A5EF28286C0ABBD48E9CDD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F91226101ECE8FCFD221A3EC54481F82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
