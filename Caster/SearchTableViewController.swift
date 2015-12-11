@@ -24,34 +24,6 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
     var colorArray = ColorSchemeOf(ColorScheme.Triadic, color: FlatBlue(), isFlatScheme: true)
     let imageView: UIImageView = UIImageView()
     
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
-        searchBar.resignFirstResponder()
-        podcasts.removeAll()
-        var text = searchBar.text
-        text = text?.stringByReplacingOccurrencesOfString(" ", withString: "+")
-        let url = NSURL(string: "https://itunes.apple.com/search?media=podcast&limit=25&term=".stringByAppendingString(text!))
-        Alamofire.request(.GET, url!).responseJSON() { response in
-            switch response.result {
-            case .Success(let data):
-                let json = JSON(data)
-                for (_, show):(String, JSON) in json["results"] {
-                    let title = show["collectionName"].stringValue
-                    let author = show["artistName"].stringValue
-                    let showImage = show["artworkUrl100"].URL
-                    let feedUrl = show["feedUrl"].URL
-                    let podcast = Show(title: title, author: author, showImage: showImage, feedUrl: feedUrl)
-                    self.podcasts.append(podcast)
-                }
-                self.tableView.reloadData()
-            case .Failure(let error):
-                //TODO: Show user that search request has failed
-                print("Request failed with error: \(error)")
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,7 +58,7 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
         let cell = tableView.dequeueReusableCellWithIdentifier("ShowCell") as! ShowTableViewCell
         
         cell.titleLabel?.text = self.podcasts[indexPath.row].title
-        cell.titleLabel.textColor = colorArray[4]
+        cell.titleLabel.textColor = colorArray[2]
         
         cell.authorLabel?.text = self.podcasts[indexPath.row].author
         
@@ -107,12 +79,15 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Search here..."
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
-        
+        searchController.searchBar.backgroundColor = UIColor.clearColor()
+        searchController.searchBar.sea
+
         // Place the search bar view to the tableview headerview.
-        tableView.tableHeaderView = searchController.searchBar
+        self.navigationItem.titleView = searchController.searchBar
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -144,8 +119,10 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
         }
     }
     
-    
-    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.searchController.searchBar.endEditing(true)
+    }
+
     // MARK: - Navigation
     
     let podcastSegueIndentifier = "ShowPodcastSegue"

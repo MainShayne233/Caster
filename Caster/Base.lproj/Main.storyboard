@@ -106,9 +106,7 @@
                             <outlet property="delegate" destination="dBL-xT-dZJ" id="6vZ-IC-kSK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gip-RI-x9l">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="rAl-U5-IA3"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="gip-RI-x9l"/>
                     <connections>
                         <outlet property="tableView" destination="Kr6-cu-ecV" id="NRP-E9-T2r"/>
                     </connections>

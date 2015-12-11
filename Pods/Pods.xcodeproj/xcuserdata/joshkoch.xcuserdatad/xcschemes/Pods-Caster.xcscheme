@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BEE3DB5A2B1694AECACF7434'
+               BlueprintIdentifier = '3CB5DED34A44AD1000124C72'
                BlueprintName = 'Pods-Caster'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Caster.framework'>

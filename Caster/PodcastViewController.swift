@@ -25,18 +25,17 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewWillAppear(animated: Bool) {
         podcastTitleLabel.text = podcastTitle
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
         podcastImage.layer.borderWidth = 1
         podcastImage.layer.masksToBounds = false
         podcastImage.layer.borderColor = UIColor.flatGrayColor().CGColor
         podcastImage.layer.cornerRadius = podcastImage.frame.size.height / 2
         podcastImage.clipsToBounds = true
         podcastImage.image = selectedImage
-        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         Alamofire.request(.GET, feedUrl).responseData { response in
             switch response.result {
             case .Success(let data):
@@ -58,8 +57,6 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
                 print("Request failed with error: \(error)")
             }
         }
-        
-        
         
         configureTableView()
     }
