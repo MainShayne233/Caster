@@ -15,12 +15,12 @@ import Kingfisher
 import DZNEmptyDataSet
 import ChameleonFramework
 
-class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     
     var podcasts:[Show] = []
+    var searchController: UISearchController!
     var colorArray = ColorSchemeOf(ColorScheme.Triadic, color: FlatBlue(), isFlatScheme: true)
     let imageView: UIImageView = UIImageView()
     
@@ -54,10 +54,9 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
-        self.searchBar.sizeToFit()
-        self.tableView.tableFooterView = UIView()
         
+        configureSearchBar()
+        self.tableView.tableFooterView = UIView()
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         
@@ -69,11 +68,11 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    /*deinit {
+    deinit {
         self.tableView.emptyDataSetDelegate = nil
         self.tableView.emptyDataSetSource = nil
     }
-    */
+    
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1 //Only one section for results
@@ -83,7 +82,6 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
         return self.podcasts.count
     }
 
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ShowCell") as! ShowTableViewCell
         
@@ -101,6 +99,52 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UITableV
         
         return cell
     }
+    
+    //MARK: - SearchBar
+    
+    func configureSearchBar() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search here..."
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        
+        // Place the search bar view to the tableview headerview.
+        tableView.tableHeaderView = searchController.searchBar
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        podcasts.removeAll()
+        var text = searchController.searchBar.text
+        if text?.characters.count > 2 {
+            text = text?.stringByReplacingOccurrencesOfString(" ", withString: "+")
+            let url = NSURL(string: "https://itunes.apple.com/search?media=podcast&limit=25&term=".stringByAppendingString(text!))
+            Alamofire.request(.GET, url!).responseJSON() { response in
+                switch response.result {
+                case .Success(let data):
+                    let json = JSON(data)
+                    for (_, show):(String, JSON) in json["results"] {
+                        let title = show["collectionName"].stringValue
+                        let author = show["artistName"].stringValue
+                        let showImage = show["artworkUrl100"].URL
+                        let feedUrl = show["feedUrl"].URL
+                        let podcast = Show(title: title, author: author, showImage: showImage, feedUrl: feedUrl)
+                        self.podcasts.append(podcast)
+                    }
+                    self.tableView.reloadData()
+                case .Failure(let error):
+                    //TODO: Show user that search request has failed
+                    print("Request failed with error: \(error)")
+                }
+            }
+        } else {
+            self.tableView.reloadData()
+        }
+    }
+    
+    
     
     // MARK: - Navigation
     
