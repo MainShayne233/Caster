@@ -21,7 +21,8 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
     
     var podcasts:[Show] = []
     var searchController: UISearchController!
-    var colorArray = ColorSchemeOf(ColorScheme.Triadic, color: FlatBlue(), isFlatScheme: true)
+    var gradientScheme = [FlatNavyBlueDark(), FlatWhite()]
+    var colorArray = ColorSchemeOf(ColorScheme.Complementary, color: FlatNavyBlueDark(), isFlatScheme: true)
     let imageView: UIImageView = UIImageView()
     
     override func viewDidLoad() {
@@ -33,6 +34,7 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
         self.tableView.emptyDataSetDelegate = self
         
         self.navigationController!.hidesNavigationBarHairline = true
+        self.view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: gradientScheme)
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,7 +86,6 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
         searchController.searchBar.backgroundColor = UIColor.clearColor()
-        searchController.searchBar.sea
 
         // Place the search bar view to the tableview headerview.
         self.navigationItem.titleView = searchController.searchBar

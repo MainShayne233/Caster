@@ -22,6 +22,7 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
     var feedUrl = NSURL()
     var selectedImage: UIImage!
     var episodes:[Episode] = []
+    var gradientScheme = [FlatNavyBlueDark(), FlatWhite()]
     
     override func viewWillAppear(animated: Bool) {
         podcastTitleLabel.text = podcastTitle
@@ -59,11 +60,14 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         configureTableView()
+        self.view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: gradientScheme)
+
     }
 
     func configureTableView() {
         episodeTableView.rowHeight = UITableViewAutomaticDimension
         episodeTableView.estimatedRowHeight = 120.0
+        episodeTableView.backgroundColor = UIColor.clearColor()
     }
     
     override func didReceiveMemoryWarning() {
