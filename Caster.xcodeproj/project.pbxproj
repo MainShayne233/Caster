@@ -18,6 +18,8 @@
 		076DAE3E1C08D3C600927960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076DAE3C1C08D3C600927960 /* Main.storyboard */; };
 		076DAE401C08D3C600927960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 076DAE3F1C08D3C600927960 /* Assets.xcassets */; };
 		076DAE431C08D3C600927960 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076DAE411C08D3C600927960 /* LaunchScreen.storyboard */; };
+		07C6408B1C24A19C008AEC16 /* PodcastSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C6408A1C24A19C008AEC16 /* PodcastSearchBar.swift */; };
+		07C6408D1C24B145008AEC16 /* PodcastSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C6408C1C24B145008AEC16 /* PodcastSearchController.swift */; };
 		FDA3EDC6E3EC307798104400 /* Pods_Caster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABB309279BF1C3BC533B227 /* Pods_Caster.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		076DAE3F1C08D3C600927960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		076DAE421C08D3C600927960 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		076DAE441C08D3C600927960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07C6408A1C24A19C008AEC16 /* PodcastSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastSearchBar.swift; sourceTree = "<group>"; };
+		07C6408C1C24B145008AEC16 /* PodcastSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastSearchController.swift; sourceTree = "<group>"; };
 		3E889AA60B01E4A0156A8BE2 /* Pods-Caster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Caster/Pods-Caster.release.xcconfig"; sourceTree = "<group>"; };
 		6ABB309279BF1C3BC533B227 /* Pods_Caster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		977026F9E36C59957DC59D34 /* Pods-Caster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Caster/Pods-Caster.debug.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 			children = (
 				076C996A1C1377E2005D5B16 /* SearchTableViewController.swift */,
 				070B4E261C17A53C00EC05C2 /* PodcastViewController.swift */,
+				07C6408A1C24A19C008AEC16 /* PodcastSearchBar.swift */,
+				07C6408C1C24B145008AEC16 /* PodcastSearchController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -135,6 +141,7 @@
 				076DAE331C08D3C500927960 /* Resources */,
 				93E859362D03E03FBCAAE1A2 /* Embed Pods Frameworks */,
 				226A7D59A5F5A5486342BF47 /* Copy Pods Resources */,
+				07BFC1F71C1D066900F51F4D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -193,6 +200,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		07BFC1F71C1D066900F51F4D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		226A7D59A5F5A5486342BF47 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -245,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07C6408D1C24B145008AEC16 /* PodcastSearchController.swift in Sources */,
 				072C9F681C12482100C5A40D /* ShowTableViewCell.swift in Sources */,
 				070B4E291C17A6EA00EC05C2 /* EpisodeTableViewCell.swift in Sources */,
 				071AB3F11C177D3200EE7CC6 /* Episode.swift in Sources */,
@@ -252,6 +273,7 @@
 				076C99651C1284AB005D5B16 /* Show.swift in Sources */,
 				071AB3ED1C1542A900EE7CC6 /* AppDelegate.swift in Sources */,
 				070B4E271C17A53C00EC05C2 /* PodcastViewController.swift in Sources */,
+				07C6408B1C24A19C008AEC16 /* PodcastSearchBar.swift in Sources */,
 				071AB3EF1C177CB000EE7CC6 /* ShowDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

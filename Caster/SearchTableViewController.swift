@@ -14,6 +14,7 @@ import Alamofire
 import Kingfisher
 import DZNEmptyDataSet
 import ChameleonFramework
+import MaterialKit
 
 class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate {
 
@@ -22,19 +23,21 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
     var podcasts:[Show] = []
     var searchController: UISearchController!
     var gradientScheme = [FlatNavyBlueDark(), FlatWhite()]
-    var colorArray = ColorSchemeOf(ColorScheme.Complementary, color: FlatNavyBlueDark(), isFlatScheme: true)
+    var colorArray = ColorSchemeOf(ColorScheme.Complementary, color: FlatBlueDark(), isFlatScheme: true)
     let imageView: UIImageView = UIImageView()
+    var textField: MKTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureSearchBar()
+        //configureSearchBar()
+        configureTextField()
         self.tableView.tableFooterView = UIView()
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         
         self.navigationController!.hidesNavigationBarHairline = true
-        self.view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: gradientScheme)
+        //self.view.backgroundColor = GradientColor(.TopToBottom, frame: view.frame, colors: gradientScheme)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +78,26 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
     }
     
     //MARK: - SearchBar
+    /*
+    func configureCustomSearchController() {
+        searchController = PodcastSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, tableView.frame.size.width, 50.0), searchBarFont: UIFont.systemFontOfSize(16), searchBarTextColor: FlatWhite(), searchBarTintColor: UIColor.clearColor())
+        
+        searchController.customSearchBar.placeholder = "Search for podcasts here..."
+        navigationItem.titleView = searchController.customSearchBar
+    }
+    */
+    
+    func configureTextField() {
+        textField = MKTextField(frame: view.frame)
+        textField.backgroundColor = FlatWhite()
+        textField.placeholder = "Search for podcasts here..."
+        textField.rippleLocation = .Left
+        textField.floatingPlaceholderEnabled = false
+        textField.layer.borderColor = FlatWhite().CGColor
+        textField.rippleLayerColor = FlatBlue()
+
+        self.navigationItem.titleView = textField
+    }
     
     func configureSearchBar() {
         // Initialize and perform a minimum configuration to the search controller.
@@ -86,10 +109,12 @@ class SearchTableViewController: UIViewController, UISearchBarDelegate, UISearch
         searchController.searchBar.delegate = self
         searchController.searchBar.sizeToFit()
         searchController.searchBar.backgroundColor = UIColor.clearColor()
+        searchController.searchBar.showsCancelButton = false
 
         // Place the search bar view to the tableview headerview.
         self.navigationItem.titleView = searchController.searchBar
     }
+    
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         podcasts.removeAll()

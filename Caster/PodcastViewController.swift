@@ -36,7 +36,8 @@ class PodcastViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //This should probably be a function
         Alamofire.request(.GET, feedUrl).responseData { response in
             switch response.result {
             case .Success(let data):

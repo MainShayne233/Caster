@@ -12,6 +12,7 @@ def ui_pods
     pod 'ChameleonFramework/Swift'
     pod 'FontAwesomeIconFactory'
     pod 'DZNEmptyDataSet'
+    pod 'MaterialKit', :head
 end
 
 def networking_pods

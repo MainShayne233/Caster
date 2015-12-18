@@ -6,6 +6,7 @@ PODS:
   - DZNEmptyDataSet (1.7.2)
   - FontAwesomeIconFactory (2.1.1)
   - Kingfisher (1.8.3)
+  - MaterialKit (HEAD based on 0.3.5)
   - netfox (1.7)
   - SwiftyJSON (2.3.2)
   - SWXMLHash (2.0.2)
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - FontAwesomeIconFactory
   - Kingfisher
+  - MaterialKit (HEAD)
   - netfox
   - SwiftyJSON
   - SWXMLHash
@@ -26,6 +28,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   FontAwesomeIconFactory: bb9ce26d3dd13044854a82d380023c8e7d3ebf1a
   Kingfisher: ead91e9dbeb7e5a2e8b7af3bd8a294104cbcc3f9
+  MaterialKit: 6f1e9382f89593df768bc0c31ded9952a6d8ad46
   netfox: 4b7be664ab924b43eea93dacd56ace4c908a6c6c
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SWXMLHash: 9e6bd7db2e8275eaf3d2082265623d6e749e169d
